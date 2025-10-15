@@ -1,492 +1,97 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal RR.HH Empleados</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal RR.HH Empleados</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
+  <header>
+    <h1>Portal de Recursos Humanos</h1>
+    <input type="text" id="search-input" placeholder="Buscar en el portal...">
+  </header>
 
-<div class="header">
-    <h1>Portal RR.HH Empleados</h1>
-    <p>Tu centro de gestión de solicitudes y documentos</p>
-    <button data-modal-target="support-modal-container">Crear Solicitud de Soporte</button>
-</div>
-
-<div class="container">
-    <div class="search-section">
-        <input type="text" id="search-input" placeholder="Buscar temas, formularios, o enlaces rápidos...">
+  <main class="topics-container">
+    <!-- Ejemplo de tarjeta principal -->
+    <div class="topic-card"
+         data-search-content="permisos y licencias vacaciones licencias incapacidades">
+      <h3>Permisos y Licencias</h3>
+      <p>Solicita tus permisos o licencias especiales.</p>
+      <button data-modal-target="permisos-modal">Abrir</button>
     </div>
 
-    <div class="policy-carousel-container">
-        <div class="policy-carousel-inner">
-            <div class="policy-slide">
-                <h3>ABC MUEBLES: Política de Calidad</h3>
-                <p>La madera de origen sostenible garantiza productos duraderos y responsables. **#CalidadGarantizada**</p>
-            </div>
-            <div class="policy-slide">
-                <h3>ABC MUEBLES: Política Ambiental</h3>
-                <p>Cero Desperdicio: Reutilizamos todos los excedentes de madera en nuevos diseños y energía limpia. **#Sostenibilidad**</p>
-            </div>
-            <div class="policy-slide">
-                <h3>ABC MUEBLES: Seguridad Laboral</h3>
-                <p>Prioridad al cuidado de la salud en el taller. Uso obligatorio de equipo de protección personal. **#SeguridadMadera**</p>
-            </div>
-            <div class="policy-slide">
-                <h3>ABC MUEBLES: Política de Calidad</h3>
-                <p>La madera de origen sostenible garantiza productos duraderos y responsables. **#CalidadGarantizada**</p>
-            </div>
-            <div class="policy-slide">
-                <h3>ABC MUEBLES: Política Ambiental</h3>
-                <p>Cero Desperdicio: Reutilizamos todos los excedentes de madera en nuevos diseños y energía limpia. **#Sostenibilidad**</p>
-            </div>
-            <div class="policy-slide">
-                <h3>ABC MUEBLES: Seguridad Laboral</h3>
-                <p>Prioridad al cuidado de la salud en el taller. Uso obligatorio de equipo de protección personal. **#SeguridadMadera**</p>
-            </div>
-        </div>
+    <!-- Ejemplo área Nómina y Pago -->
+    <div class="topic-card"
+         data-search-content="nomina pago salario desprendibles">
+      <h3>Nómina y Pago</h3>
+      <p>Consulta tus desprendibles y gestiona pagos o novedades.</p>
+      <button data-modal-target="nomina-modal">Abrir</button>
     </div>
-    <h2>Temas más consultados</h2>
-    <div class="topic-cards-grid">
-        <div class="topic-card" id="permisos-card" data-modal-target="permisos-modal-container" data-search-content="Permisos y Licencias Ausencias Vacaciones">
-            <i class="fas fa-calendar-alt icon"></i>
-            <h3>Permisos y Licencias</h3>
-        </div>
-        <div class="topic-card" id="nomina-card" data-search-content="Nómina Pago Salario Deducciones">
-            <i class="fas fa-dollar-sign icon"></i>
-            <h3>Nómina y Pago</h3>
-        </div>
-        <div class="topic-card" id="documentos-card" data-search-content="Documentos Certificados Contrato Laboral">
-            <i class="fas fa-file-alt icon"></i>
-          
-            <h3>Documentos y Certificados</h3>
-        </div>
-        <div class="topic-card" id="empleado-card" data-modal-target="empleado-modal-container" data-search-content="Mis Solicitudes Seguimiento Historial Tareas">
-            <i class="fas fa-list-check icon"></i>
-            <h3>Mis Solicitudes (Seguimiento)</h3>
-        </div>
-        <div class="topic-card" id="beneficios-card-menu" data-modal-target="beneficios-menu-modal" data-search-content="Beneficios P&C Cumpleaños Familia Votación">
-            <i class="fas fa-heartbeat icon"></i>
-            <h3>Beneficios P&C</h3>
-        </div>
-        <div class="topic-card" data-search-content="Políticas Globales Reglamento Manual">
-            <i class="fas fa-globe icon"></i>
-            <h3>Políticas Globales</h3>
-        </div>
-    </div>
+  </main>
 
-    <h2>Enlaces rápidos</h2>
-    <div class="links-section">
-        <div class="links-container">
-            <div class="link-card">Herramientas y Apps</div>
-            <div class="link-card">Contactos RRHH</div>
-            <div class="link-card">Código de Conducta</div>
-        </div>
-    </div>
-</div>
+  <!-- ===== Modales ===== -->
 
-<div id="support-modal-container" class="modal-container modal-hidden">
+  <!-- Modal Permisos -->
+  <div id="permisos-modal" class="modal-container modal-hidden">
     <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h2>Formulario de Solicitud de Soporte</h2>
-        <form id="support-form">
-            <div class="form-group"><label for="soporte-solicitante">Nombre Completo del Solicitante:</label><input type="text" id="soporte-solicitante" name="solicitante" required placeholder="Tu Nombre Completo"></div>
-            <div class="form-group"><label for="soporte-cedula">Número de Cédula:</label><input type="text" id="soporte-cedula" name="cedula" required placeholder="Tu Número de Cédula/Identificación"></div>
-            <div class="form-group"><label for="soporte-asunto">Asunto:</label><input type="text" id="soporte-asunto" name="asunto" required></div>
-            <div class="form-group"><label for="soporte-descripcion">Descripción:</label><textarea id="soporte-descripcion" name="descripcion" rows="4" required></textarea></div>
-            <button type="submit" class="submit-btn">Enviar Soporte</button>
-        </form>
-    </div>
-</div>
+      <button class="close-btn">&times;</button>
+      <h2>Solicitud de Permisos y Licencias</h2>
+      <form>
+        <label>Nombre completo:</label>
+        <input type="text" name="nombre" required>
 
-<div id="permisos-modal-container" class="modal-container modal-hidden">
+        <label>Tipo de permiso:</label>
+        <select name="tipo" required>
+          <option>Vacaciones</option>
+          <option>Licencia no remunerada</option>
+          <option>Incapacidad</option>
+        </select>
+
+        <label>Fecha de inicio:</label>
+        <input type="date" name="inicio" required>
+
+        <label>Fecha de fin:</label>
+        <input type="date" name="fin" required>
+
+        <label>Motivo:</label>
+        <textarea name="motivo" rows="3" required></textarea>
+
+        <button type="submit" class="submit-btn">Enviar solicitud</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Nómina -->
+  <div id="nomina-modal" class="modal-container modal-hidden">
     <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h2>Tipos de Permisos y Licencias</h2>
-        <p>Selecciona el tipo de licencia o permiso que deseas solicitar:</p>
-        <div class="links-container">
-            
-            <div class="link-card" data-modal-target="solicitudes-permisos-modal">Permiso General / Consultas</div>
-            <div class="link-card" data-modal-target="solicitud-vacaciones-modal">Solicitud de Vacaciones</div>
-            <div class="link-card" data-modal-target="licencia-enfermedad-modal">Licencia Médica / Enfermedad</div>
-            <div class="link-card" data-modal-target="aniversario-modal">Día de Aniversario</div>
-            <div class="link-card" data-modal-target="dias-flotantes-menu-modal">Días Flotantes (Menú)</div> <div class="link-card" data-modal-target="licencia-maternidad-modal">Licencia de Maternidad</div>
-            <div class="link-card" data-modal-target="licencia-aborto-modal">Licencia por Aborto Espontáneo</div>
-            <div class="link-card" data-modal-target="licencia-paternidad-modal">Licencia de Paternidad</div>
-            <div class="link-card" data-modal-target="accidentes-laborales-modal">Reporte de Accidente Laboral</div>
-            <div class="link-card" data-modal-target="otras-licencias-modal">Otros Permisos / Licencias</div>
-        </div>
+      <button class="close-btn">&times;</button>
+      <h2>Consultas de Nómina y Pagos</h2>
+      <form>
+        <label>Nombre completo:</label>
+        <input type="text" name="nombre" required>
+
+        <label>Tipo de consulta:</label>
+        <select name="tipo" required>
+          <option>Desprendible de nómina</option>
+          <option>Reporte de pago pendiente</option>
+          <option>Actualización de cuenta bancaria</option>
+        </select>
+
+        <label>Mensaje o comentario:</label>
+        <textarea name="comentario" rows="3"></textarea>
+
+        <button type="submit" class="submit-btn">Enviar consulta</button>
+      </form>
     </div>
-</div>
+  </div>
 
-<div id="beneficios-menu-modal" class="modal-container modal-hidden">
-    <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h2>Selección de Beneficio Especial</h2>
-        <p>Selecciona el permiso especial que deseas solicitar:</p>
-        
-        <div class="links-container">
-            <div class="link-card" data-modal-target="cumpleanos-modal">Día de Cumpleaños</div>
-            <div class="link-card" data-modal-target="familia-modal">Día de la Familia</div>
-            <div class="link-card" data-modal-target="votacion-modal">Día de Votación</div>
-        </div>
-        
-        <div style="text-align: right; margin-top: 20px;">
-            <button type="button" class="secondary-btn" onclick="document.getElementById('beneficios-menu-modal').classList.add('modal-hidden');">Cerrar Menú</button>
-        </div>
-    </div>
-</div>
-
-<div id="dias-flotantes-menu-modal" class="modal-container modal-hidden">
-    <div class="modal-content">
-        <span class="close-btn" data-close-target="permisos-modal-container">&times;</span>
-        <h2>Días Flotantes y Permisos Especiales</h2>
-        <p>Selecciona el tipo de permiso especial que deseas solicitar:</p>
-        <div class="links-container">
-            <div class="link-card" data-modal-target="licencia-mudanza-modal">Licencia por Mudanza</div>
-            <div class="link-card" data-modal-target="permiso-lactancia-modal">Permiso por Lactancia</div>
-            <div class="link-card" data-modal-target="licencia-calamidad-modal">Licencia por Calamidad Doméstica</div>
-            <div class="link-card" data-modal-target="licencia-no-remunerada-modal">Licencia No Remunerada</div>
-            <div class="link-card" data-modal-target="licencia-remunerada-modal">Licencia Remunerada</div>
-            <div class="link-card" data-modal-target="otras-licencias-modal">Otras Licencias (Genérico)</div>
-        </div>
-    </div>
-</div>
-
-<div id="solicitudes-permisos-modal" class="modal-container modal-hidden">
-    <div class="modal-content">
-        <span class="close-btn" data-close-target="permisos-modal-container">&times;</span>
-        <h2>Permiso General / Consultas</h2>
-        <form>
-            <div class="form-group"><label for="permiso-solicitante">Nombre Completo del Solicitante:</label><input type="text" id="permiso-solicitante" name="solicitante" required placeholder="Tu Nombre Completo"></div>
-            <div class="form-group"><label for="permiso-cedula">Número de Cédula:</label><input type="text" id="permiso-cedula" name="cedula" required placeholder="Tu Número de Cédula/Identificación"></div>
-            <div class="form-group"><label for="permiso-asunto">Asunto/Tipo de Permiso:</label><input type="text" id="permiso-asunto" name="asunto" required placeholder="Ej: Cita médica personal, Trámites"></div>
-            <div class="form-group"><label for="permiso-fecha-inicio">Fecha de Inicio:</label><input type="date" id="permiso-fecha-inicio" name="fecha-inicio" required></div>
-            <div class="form-group"><label for="permiso-dias">Día/s Solicitado:</label><input type="number" id="permiso-dias" name="dias" min="0.5" step="0.5" value="1" required></div>
-            <div class="form-group"><label for="permiso-justificacion">Justificación Detallada:</label><textarea id="permiso-justificacion" name="justificacion" rows="4" required></textarea></div>
-            <button type="submit" class="submit-btn">Enviar Solicitud</button>
-        </form>
-    </div>
-</div>
-
-<div id="solicitud-vacaciones-modal" class="modal-container modal-hidden">
-    <div class="modal-content">
-        <span class="close-btn" data-close-target="permisos-modal-container">&times;</span>
-        <h2>Solicitud de Vacaciones Anuales</h2>
-        <form id="vacaciones-form">
-            <div class="form-group"><label for="vac-solicitante">Solicitante:</label><input type="text" id="vac-solicitante" name="solicitante" value="[Nombre del Empleado]"></div> 
-            <div class="form-group"><label for="vac-cedula">Número de Cédula:</label><input type="text" id="vac-cedula" name="cedula" required placeholder="Tu Número de Cédula/Identificación"></div>
-            <div class="form-group"><label for="vac-dias-disponibles">Días Disponibles:</label><input type="number" id="vac-dias-disponibles" name="dias-disponibles" value="15"></div>
-            <hr>
-            <div class="form-group"><label for="vac-fecha-inicio">Fecha de Inicio de Vacaciones:</label><input type="date" id="vac-fecha-inicio" name="fecha-inicio" required></div>
-            <div class="form-group"><label for="vac-fecha-fin">Fecha de Retorno al Trabajo:</label><input type="date" id="vac-fecha-fin" name="fecha-fin" required></div>
-            <div class="form-group"><label for="vac-dias-total">Días Hábiles Solicitados:</label><input type="number" id="vac-dias-total" name="dias-total" min="1" max="15" required></div>
-            <div class="form-group"><label for="vac-contacto-emergencia">Contacto de Emergencia:</label><input type="text" id="vac-contacto-emergencia" name="contacto-emergencia" placeholder="Nombre y Teléfono"></div>
-            <button type="submit" class="submit-btn">Enviar Solicitud de Vacaciones</button>
-        </form>
-    </div>
-</div>
-
-<div id="licencia-enfermedad-modal" class="modal-container modal-hidden">
-    <div class="modal-content">
-        <span class="close-btn" data-close-target="permisos-modal-container">&times;</span>
-        <h2>Licencia Médica / Enfermedad</h2>
-        <form>
-            <div class="form-group"><label for="enf-solicitante">Nombre Completo del Solicitante:</label><input type="text" id="enf-solicitante" name="solicitante" required placeholder="Tu Nombre Completo"></div>
-            <div class="form-group"><label for="enf-cedula">Número de Cédula:</label><input type="text" id="enf-cedula" name="cedula" required placeholder="Tu Número de Cédula/Identificación"></div>
-            <div class="form-group"><label for="enf-diagnostico">Motivo/Diagnóstico (Opcional):</label><input type="text" id="enf-diagnostico" name="diagnostico" placeholder="Ej: Gripe fuerte, Cita con especialista"></div>
-            <div class="form-group"><label for="enf-fecha-inicio">Fecha de Inicio de Incapacidad:</label><input type="date" id="enf-fecha-inicio" name="fecha-inicio" required></div>
-            <div class="form-group"><label for="enf-dias">Días de Incapacidad:</label><input type="number" id="enf-dias" name="dias" min="1" required></div>
-            <div class="form-group"><label for="enf-adjunto">Adjuntar Certificado Médico (Requerido):</label><input type="file" id="enf-adjunto" name="adjunto" required></div>
-            <button type="submit" class="submit-btn">Enviar Licencia</button>
-        </form>
-    </div>
-</div>
-
-<div id="accidentes-laborales-modal" class="modal-container modal-hidden">
-    <div class="modal-content">
-        <span class="close-btn" data-close-target="permisos-modal-container">&times;</span>
-        <h2>Reporte de Accidente Laboral</h2>
-        <form>
-            <div class="form-group"><label for="al-solicitante">Nombre Completo del Solicitante (Reporta):</label><input type="text" id="al-solicitante" name="solicitante" required placeholder="Tu Nombre Completo"></div>
-            <div class="form-group"><label for="al-cedula">Número de Cédula:</label><input type="text" id="al-cedula" name="cedula" required placeholder="Tu Número de Cédula/Identificación"></div>
-            <div class="form-group"><label for="al-fecha-accidente">Fecha Incidente:</label><input type="date" id="al-fecha-accidente" name="fecha-incidente" required></div>
-            <div class="form-group"><label for="al-hora">Hora:</label><input type="time" id="al-hora" name="hora" required></div>
-            <div class="form-group"><label for="al-lugar">Lugar:</label><input type="text" id="al-lugar" name="lugar" placeholder="Ej: Pasillo Bodega Sur, Oficina 301" required></div>
-            <div class="form-group"><label for="al-empleado-involucrado">Empleado/s Involucrado/s:</label><input type="text" id="al-empleado-involucrado" name="empleado-involucrado" placeholder="Ej: Yo mismo, Juan Pérez, Marta Gómez" required></div>
-            <div class="form-group"><label for="al-codigo-accidente">Código de Accidente (Referencia):</label><input type="text" id="al-codigo-accidente" name="codigo-accidente" placeholder="Ej: A-00123" required></div>
-            <div class="form-group"><label for="al-fecha-seguimiento">Fecha de Seguimiento (Esperada):</label><input type="date" id="al-fecha-seguimiento" name="fecha-seguimiento" required></div>
-            <div class="form-group"><label for="al-tipo">Tipo de accidente:</label><select id="al-tipo" name="tipo-accidente" required>
-                <option value="">Seleccione el tipo</option>
-                <option value="Leve">Leve (Requiere Primeros Auxilios)</option>
-                <option value="Grave">Grave (Requiere Atención Médica)</option>
-                <option value="In Itinere">Accidente In Itinere (De/A casa)</option>
-                <option value="Mortal">Mortal</option>
-            </select></div>
-            <div class="form-group"><label for="al-descripcion">Descripción:</label><textarea id="al-descripcion" name="descripcion" rows="4" required placeholder="Describa brevemente la secuencia de lo ocurrido, las causas aparentes y las lesiones observadas."></textarea></div>
-            <div class="form-group"><label for="al-evidencia">Adjuntar Evidencia (Fotos, Informes):</label><input type="file" id="al-evidencia" name="evidencia[]" multiple accept="image/*, application/pdf"></div>
-            <button type="submit" class="submit-btn danger-btn-submit">Reportar Accidente</button>
-        </form>
-    </div>
-</div>
-
-<div id="licencia-maternidad-modal" class="modal-container modal-hidden">
-    <div class="modal-content">
-        <span class="close-btn" data-close-target="permisos-modal-container">&times;</span>
-        <h2>Licencia de Maternidad</h2>
-        <form>
-            <div class="form-group"><label for="mat-solicitante">Nombre Completo del Solicitante:</label><input type="text" id="mat-solicitante" name="solicitante" required placeholder="Tu Nombre Completo"></div>
-            <div class="form-group"><label for="mat-cedula">Número de Cédula:</label><input type="text" id="mat-cedula" name="cedula" required placeholder="Tu Número de Cédula/Identificación"></div>
-            <div class="form-group"><label for="mat-fecha-probable">Fecha Probable de Parto:</label><input type="date" id="mat-fecha-probable" name="fecha-probable" required></div>
-            <div class="form-group"><label for="mat-fecha-inicio">Fecha de Inicio de Licencia:</label><input type="date" id="mat-fecha-inicio" name="fecha-inicio" required></div>
-            <div class="form-group"><label for="mat-adjunto">Adjuntar Certificado de Embarazo (Requerido):</label><input type="file" id="mat-adjunto" name="adjunto" required></div>
-            <button type="submit" class="submit-btn">Enviar Solicitud</button>
-        </form>
-    </div>
-</div>
-
-<div id="licencia-paternidad-modal" class="modal-container modal-hidden">
-    <div class="modal-content">
-        <span class="close-btn" data-close-target="permisos-modal-container">&times;</span>
-        <h2>Licencia de Paternidad</h2>
-        <form>
-            <div class="form-group"><label for="pat-solicitante">Nombre Completo del Solicitante:</label><input type="text" id="pat-solicitante" name="solicitante" required placeholder="Tu Nombre Completo"></div>
-            <div class="form-group"><label for="pat-cedula">Número de Cédula:</label><input type="text" id="pat-cedula" name="cedula" required placeholder="Tu Número de Cédula/Identificación"></div>
-            <div class="form-group"><label for="pat-nombre-hijo">Nombre del Hijo/a:</label><input type="text" id="pat-nombre-hijo" name="nombre-hijo" required></div>
-            <div class="form-group"><label for="pat-fecha-parto">Fecha de Nacimiento/Parto:</label><input type="date" id="pat-fecha-parto" name="fecha-parto" required></div>
-            <div class="form-group"><label for="pat-dias">Días de Licencia Solicitados:</label><input type="number" id="pat-dias" name="dias" value="10"></div>
-            <div class="form-group"><label for="pat-adjunto">Adjuntar Registro de Nacimiento (Requerido):</label><input type="file" id="pat-adjunto" name="adjunto" required></div>
-            <button type="submit" class="submit-btn">Enviar Solicitud</button>
-        </form>
-    </div>
-</div>
-
-<div id="licencia-aborto-modal" class="modal-container modal-hidden">
-    <div class="modal-content">
-        <span class="close-btn" data-close-target="permisos-modal-container">&times;</span>
-        <h2>Licencia por Aborto Espontáneo</h2>
-        <form>
-            <div class="form-group"><label for="aborto-solicitante">Nombre Completo del Solicitante:</label><input type="text" id="aborto-solicitante" name="solicitante" required placeholder="Tu Nombre Completo"></div>
-            <div class="form-group"><label for="aborto-cedula">Número de Cédula:</label><input type="text" id="aborto-cedula" name="cedula" required placeholder="Tu Número de Cédula/Identificación"></div>
-            <div class="form-group"><label for="aborto-fecha">Fecha del Evento:</label><input type="date" id="aborto-fecha" name="fecha-evento" required></div>
-            <div class="form-group"><label for="aborto-dias">Días de Licencia Solicitados:</label><input type="number" id="aborto-dias" name="dias" min="1" required></div>
-            <div class="form-group"><label for="aborto-adjunto">Adjuntar Certificado Médico (Requerido):</label><input type="file" id="aborto-adjunto" name="adjunto" required></div>
-            <button type="submit" class="submit-btn">Enviar Solicitud</button>
-        </form>
-    </div>
-</div>
-
-<div id="aniversario-modal" class="modal-container modal-hidden">
-    <div class="modal-content">
-        <span class="close-btn" data-close-target="permisos-modal-container">&times;</span>
-        <h2>Solicitud: Día de Aniversario</h2>
-        <form>
-            <div class="form-group"><label for="aniv-solicitante">Solicitante:</label><input type="text" id="aniv-solicitante" name="solicitante" value="[Nombre del Empleado]"></div>
-            <div class="form-group"><label for="aniv-cedula">Número de Cédula:</label><input type="text" id="aniv-cedula" name="cedula" required placeholder="Tu Número de Cédula/Identificación"></div>
-            <div class="form-group"><label for="aniv-fecha">Fecha Solicitada:</label><input type="date" id="aniv-fecha" name="fecha" required></div>
-            <div class="form-group"><label for="aniv-dias">Día/s Solicitado:</label><input type="number" id="aniv-dias" name="dias" min="1" max="1" value="1"></div>
-            <div class="form-group"><label for="aniv-motivo">Motivo (Automático):</label><input type="text" id="aniv-motivo" name="motivo" value="Permiso por Día de Aniversario Laboral"></div>
-            <button type="submit" class="submit-btn">Enviar Solicitud</button>
-        </form>
-    </div>
-</div>
-
-<div id="otras-licencias-modal" class="modal-container modal-hidden">
-    <div class="modal-content">
-        <span class="close-btn" data-close-target="dias-flotantes-menu-modal">&times;</span> <h2>Solicitud: Otros Permisos / Licencias</h2>
-        <form>
-            <div class="form-group"><label for="otras-solicitante">Nombre Completo del Solicitante:</label><input type="text" id="otras-solicitante" name="solicitante" required placeholder="Tu Nombre Completo"></div>
-            <div class="form-group"><label for="otras-cedula">Número de Cédula:</label><input type="text" id="otras-cedula" name="cedula" required placeholder="Tu Número de Cédula/Identificación"></div>
-            <div class="form-group"><label for="otras-tipo">Especifica el Tipo de Licencia:</label><input type="text" id="otras-tipo" name="tipo" required placeholder="Ej: Matrimonio, Luto, Citación Legal"></div>
-            <div class="form-group"><label for="otras-fecha-inicio">Fecha de Inicio:</label><input type="date" id="otras-fecha-inicio" name="fecha-inicio" required></div>
-            <div class="form-group"><label for="otras-dias">Días Solicitados:</label><input type="number" id="otras-dias" name="dias" min="1" required></div>
-            <div class="form-group"><label for="otras-adjunto">Adjuntar Documento Soporte:</label><input type="file" id="otras-adjunto" name="adjunto"></div>
-            <button type="submit" class="submit-btn">Enviar Solicitud</button>
-        </form>
-    </div>
-</div>
-
-
-<div id="licencia-mudanza-modal" class="modal-container modal-hidden">
-    <div class="modal-content">
-        <span class="close-btn" data-close-target="dias-flotantes-menu-modal">&times;</span>
-        <h2>Licencia por Mudanza</h2>
-        <form>
-            <div class="form-group"><label for="mud-solicitante">Nombre Completo del Solicitante:</label><input type="text" id="mud-solicitante" name="solicitante" required placeholder="Tu Nombre Completo"></div>
-            <div class="form-group"><label for="mud-cedula">Número de Cédula:</label><input type="text" id="mud-cedula" name="cedula" required placeholder="Tu Número de Cédula/Identificación"></div>
-            <div class="form-group"><label for="mud-fecha-mudanza">Fecha de Mudanza:</label><input type="date" id="mud-fecha-mudanza" name="fecha-mudanza" required></div>
-            <div class="form-group"><label for="mud-dias">Días Solicitados:</label><input type="number" id="mud-dias" name="dias" min="1" max="2" value="1" required></div>
-            <div class="form-group"><label for="mud-direccion-nueva">Dirección Nueva (Comprobante de domicilio):</label><input type="text" id="mud-direccion-nueva" name="direccion-nueva" required></div>
-            <div class="form-group"><label for="mud-adjunto">Adjuntar Comprobante (Ej. Contrato de Arriendo/Compra):</label><input type="file" id="mud-adjunto" name="adjunto" accept=".pdf,.jpg,.png"></div>
-            <button type="submit" class="submit-btn">Solicitar Licencia</button>
-        </form>
-    </div>
-</div>
-
-<div id="permiso-lactancia-modal" class="modal-container modal-hidden">
-    <div class="modal-content">
-        <span class="close-btn" data-close-target="dias-flotantes-menu-modal">&times;</span>
-        <h2>Permiso por Lactancia</h2>
-        <form>
-            <div class="form-group"><label for="lac-solicitante">Nombre Completo del Solicitante:</label><input type="text" id="lac-solicitante" name="solicitante" required placeholder="Tu Nombre Completo"></div>
-            <div class="form-group"><label for="lac-cedula">Número de Cédula:</label><input type="text" id="lac-cedula" name="cedula" required placeholder="Tu Número de Cédula/Identificación"></div>
-            <div class="form-group"><label for="lac-hijo">Nombre del Lactante:</label><input type="text" id="lac-hijo" name="nombre-hijo" required></div>
-            <div class="form-group"><label for="lac-fecha-inicio">Fecha de Inicio del Permiso:</label><input type="date" id="lac-fecha-inicio" name="fecha-inicio" required></div>
-            <div class="form-group"><label for="lac-horas-diarias">Horas Diarias Solicitadas:</label><input type="number" id="lac-horas-diarias" name="horas-diarias" min="0.5" step="0.5" value="1" required></div>
-            <div class="form-group"><label for="lac-horario">Horario de Salida/Llegada (Diferencial):</label><input type="text" id="lac-horario" name="horario" required placeholder="Ej: Salida 1 hora antes (16:00)"></div>
-            <button type="submit" class="submit-btn">Solicitar Permiso</button>
-        </form>
-    </div>
-</div>
-
-<div id="licencia-calamidad-modal" class="modal-container modal-hidden">
-    <div class="modal-content">
-        <span class="close-btn" data-close-target="dias-flotantes-menu-modal">&times;</span>
-        <h2>Licencia por Calamidad Doméstica</h2>
-        <form>
-            <div class="form-group"><label for="cal-solicitante">Nombre Completo del Solicitante:</label><input type="text" id="cal-solicitante" name="solicitante" required placeholder="Tu Nombre Completo"></div>
-            <div class="form-group"><label for="cal-cedula">Número de Cédula:</label><input type="text" id="cal-cedula" name="cedula" required placeholder="Tu Número de Cédula/Identificación"></div>
-            <div class="form-group"><label for="cal-fecha-inicio">Fecha de Inicio:</label><input type="date" id="cal-fecha-inicio" name="fecha-inicio" required></div>
-            <div class="form-group"><label for="cal-dias">Días Solicitados:</label><input type="number" id="cal-dias" name="dias" min="1" max="5" required></div>
-            <div class="form-group"><label for="cal-descripcion">Descripción del Evento (Detalles):</label><textarea id="cal-descripcion" name="descripcion" rows="4" required placeholder="Describa el evento, la persona afectada (si aplica) y la relación."></textarea></div>
-            <div class="form-group"><label for="cal-adjunto">Adjuntar Evidencia (Ej. Certificado de Defunción, policial):</label><input type="file" id="cal-adjunto" name="adjunto" required></div>
-            <button type="submit" class="submit-btn">Solicitar Licencia</button>
-        </form>
-    </div>
-</div>
-
-<div id="licencia-no-remunerada-modal" class="modal-container modal-hidden">
-    <div class="modal-content">
-        <span class="close-btn" data-close-target="dias-flotantes-menu-modal">&times;</span>
-        <h2>Licencia No Remunerada</h2>
-        <form>
-            <div class="form-group"><label for="no-rem-solicitante">Nombre Completo del Solicitante:</label><input type="text" id="no-rem-solicitante" name="solicitante" required placeholder="Tu Nombre Completo"></div>
-            <div class="form-group"><label for="no-rem-cedula">Número de Cédula:</label><input type="text" id="no-rem-cedula" name="cedula" required placeholder="Tu Número de Cédula/Identificación"></div>
-            <div class="form-group"><label for="no-rem-fecha-inicio">Fecha de Inicio:</label><input type="date" id="no-rem-fecha-inicio" name="fecha-inicio" required></div>
-            <div class="form-group"><label for="no-rem-fecha-fin">Fecha de Finalización:</label><input type="date" id="no-rem-fecha-fin" name="fecha-fin" required></div>
-            <div class="form-group"><label for="no-rem-dias">Total de Días Hábiles:</label><input type="number" id="no-rem-dias" name="dias" min="5" required></div>
-            <div class="form-group"><label for="no-rem-motivo">Motivo Detallado:</label><textarea id="no-rem-motivo" name="motivo" rows="4" required placeholder="Indique la razón específica por la cual solicita esta licencia."></textarea></div>
-            <button type="submit" class="submit-btn">Solicitar Licencia No Remunerada</button>
-        </form>
-    </div>
-</div>
-
-<div id="licencia-remunerada-modal" class="modal-container modal-hidden">
-    <div class="modal-content">
-        <span class="close-btn" data-close-target="dias-flotantes-menu-modal">&times;</span>
-        <h2>Licencia Remunerada</h2>
-        <form>
-            <div class="form-group"><label for="rem-solicitante">Nombre Completo del Solicitante:</label><input type="text" id="rem-solicitante" name="solicitante" required placeholder="Tu Nombre Completo"></div>
-            <div class="form-group"><label for="rem-cedula">Número de Cédula:</label><input type="text" id="rem-cedula" name="cedula" required placeholder="Tu Número de Cédula/Identificación"></div>
-            <div class="form-group"><label for="rem-fecha-inicio">Fecha de Inicio:</label><input type="date" id="rem-fecha-inicio" name="fecha-inicio" required></div>
-            <div class="form-group"><label for="rem-fecha-fin">Fecha de Finalización:</label><input type="date" id="rem-fecha-fin" name="fecha-fin" required></div>
-            <div class="form-group"><label for="rem-dias">Total de Días Hábiles:</label><input type="number" id="rem-dias" name="dias" min="1" required></div>
-            <div class="form-group"><label for="rem-motivo">Motivo Detallado:</label><textarea id="rem-motivo" name="motivo" rows="4" required placeholder="Solo aplica por ley o acuerdo. Indique la razón y adjunte el documento."></textarea></div>
-            <div class="form-group"><label for="rem-adjunto">Adjuntar Documento Legal/Soporte:</label><input type="file" id="rem-adjunto" name="adjunto" required></div>
-            <button type="submit" class="submit-btn">Solicitar Licencia Remunerada</button>
-        </form>
-    </div>
-</div>
-
-<div id="cumpleanos-modal" class="modal-container modal-hidden">
-    <div class="modal-content">
-        <span class="close-btn" data-close-target="beneficios-menu-modal">&times;</span>
-        <h2>Solicitud: Día de Cumpleaños</h2>
-        <form id="cumpleanos-form">
-            <div class="form-group"><label for="cump-solicitante">Solicitante:</label><input type="text" id="cump-solicitante" name="solicitante" value="[Nombre del Empleado]"></div>
-            <div class="form-group"><label for="cump-cedula">Número de Cédula:</label><input type="text" id="cump-cedula" name="cedula" required placeholder="Tu Número de Cédula/Identificación"></div>
-            <div class="form-group"><label for="cump-fecha-inicio">Fecha de Inicio:</label><input type="date" id="cump-fecha-inicio" name="fecha-inicio" required></div>
-            <div class="form-group"><label for="cump-dias">Día/s Solicitado:</label><input type="number" id="cump-dias" name="dias" min="1" max="1" value="1"></div>
-            <div class="form-group"><label for="cump-motivo">Motivo (Automático):</label><input type="text" id="cump-motivo" name="motivo" value="Beneficio: Día de Cumpleaños"></div>
-            <button type="submit" class="submit-btn">Enviar Solicitud</button>
-        </form>
-    </div>
-</div>
-
-<div id="familia-modal" class="modal-container modal-hidden">
-    <div class="modal-content">
-        <span class="close-btn" data-close-target="beneficios-menu-modal">&times;</span>
-        <h2>Solicitud: Día de la Familia</h2>
-        <form id="familia-form">
-            <div class="form-group"><label for="fam-solicitante">Solicitante:</label><input type="text" id="fam-solicitante" name="solicitante" value="[Nombre del Empleado]"></div>
-            <div class="form-group"><label for="fam-cedula">Número de Cédula:</label><input type="text" id="fam-cedula" name="cedula" required placeholder="Tu Número de Cédula/Identificación"></div>
-            <div class="form-group"><label for="fam-fecha-inicio">Fecha de Inicio:</label><input type="date" id="fam-fecha-inicio" name="fecha-inicio" required></div>
-            <div class="form-group"><label for="fam-dias">Día/s Solicitado:</label><input type="number" id="fam-dias" name="dias" min="1" max="1" value="1"></div>
-            <div class="form-group"><label for="fam-motivo">Motivo (Automático):</label><input type="text" id="fam-motivo" name="motivo" value="Beneficio: Día de la Familia"></div>
-            <button type="submit" class="submit-btn">Enviar Solicitud</button>
-        </form>
-    </div>
-</div>
-
-<div id="votacion-modal" class="modal-container modal-hidden">
-    <div class="modal-content">
-        <span class="close-btn" data-close-target="beneficios-menu-modal">&times;</span>
-        <h2>Solicitud: Día de Votación</h2>
-        <form id="votacion-form">
-            <div class="form-group"><label for="vot-solicitante">Solicitante:</label><input type="text" id="vot-solicitante" name="solicitante" value="[Nombre del Empleado]"></div>
-            <div class="form-group"><label for="vot-cedula">Número de Cédula:</label><input type="text" id="vot-cedula" name="cedula" required placeholder="Tu Número de Cédula/Identificación"></div>
-            <div class="form-group"><label for="vot-fecha-inicio">Fecha de Inicio (Día de Elecciones):</label><input type="date" id="vot-fecha-inicio" name="fecha-inicio" required></div>
-            <div class="form-group"><label for="vot-dias">Día/s Solicitado:</label><input type="number" id="vot-dias" name="dias" min="1" max="1" value="1"></div>
-            <div class="form-group"><label for="vot-motivo">Motivo (Automático):</label><input type="text" id="vot-motivo" name="motivo" value="Permiso por Día de Votación"></div>
-            <button type="submit" class="submit-btn">Enviar Solicitud</button>
-        </form>
-    </div>
-</div>
-
-
-<div id="empleado-modal-container" class="modal-container modal-hidden">
-    <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h2>Panel de Seguimiento de Solicitudes</h2>
-        <p>Revisa el estado de todas tus solicitudes enviadas.</p>
-        <div class="tasks-controls">
-            <label for="filter-type">Filtrar por Tipo:</label>
-            <select id="filter-type" name="filter-type">
-                <option value="all">Todos los Tipos</option>
-            </select>
-            <input type="text" id="table-search-input" placeholder="Buscar por ID, Tipo o Estado...">
-        </div>
-        <div class="table-responsive">
-            <table class="tasks-table">
-                <thead>
-                    <tr><th>ID</th><th>Tipo de Solicitud</th><th>Fecha de Envío</th><th>Estado</th><th>Acciones</th></tr>
-                </thead>
-                <tbody id="task-list-details"><tr><td colspan="5" style="text-align: center;">Cargando solicitudes...</td></tr></tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
-<div id="security-key-modal" class="modal-container modal-hidden">
-    <div class="modal-content security-modal-content">
-        <span class="close-btn">&times;</span>
-        <h2>Confirmación de Borrado</h2>
-        <p>Estás a punto de eliminar la solicitud <strong id="security-key-id-placeholder">#????</strong>. Esta acción es irreversible.</p>
-        <p>Por favor, introduce la clave de seguridad para confirmar:</p>
-        <form id="security-key-form">
-            <div class="form-group" style="text-align: center;">
-                <input type="password" id="delete-key-input" placeholder="Clave de Seguridad" required>
-            </div>
-            <div class="security-actions">
-                <button type="button" id="cancel-delete-btn" class="secondary-btn-cancel">Cancelar</button>
-                <button type="submit" class="submit-btn danger-btn-submit">Confirmar Borrado</button>
-            </div>
-        </form>
-    </div>
-</div>
-
-<div id="detalle-formulario-modal" class="modal-container modal-hidden">
-    <div class="modal-content">
-        <span class="close-btn">&times;</span> 
-        <h2 id="detalle-titulo">Detalle de Solicitud</h2>
-        <p id="detalle-fecha" style="color: var(--color-primary-dark); font-style: italic;"></p>
-        <div id="detalle-contenido"><p>Cargando detalles...</p></div>
-        <div style="text-align: right; margin-top: 20px;"><button type="button" class="secondary-btn" onclick="document.getElementById('detalle-formulario-modal').classList.add('modal-hidden');">Cerrar</button></div>
-    </div>
-</div>
-
-<script src="script.js"></script>
+  <!-- Script principal -->
+  <script src="./script.js"></script>
 </body>
 </html>
